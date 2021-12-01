@@ -8,7 +8,6 @@ export async function getStaticProps() { // プリレンダリングされる前
   return {
     props: {
       allPostsData,
-      hun
     }
   }
 }
