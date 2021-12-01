@@ -4,6 +4,21 @@ import matter from 'gray-matter'
 
 const postsDirectory = path.join( process.cwd(), 'posts' )
 
+// next https://nextjs.org/learn/basics/dynamic-routes/implement-getstaticprops
+
+export function getAllPostIds () {
+  return fileNames.map( fileName => {
+    // 動的ルーティング [id].jsを使う場合、必ずparamsが必要。そうでないと失敗する。
+    return {
+      params: {
+        id : fileName.replace(/\.md$/, '')
+      }
+    }
+  })
+}
+  
+  
+  
 export function getSortedPostsData() {
   // /posts　配下のファイル名を取得する
     const fileNames = fs.readdirSync( postsDirectory )
